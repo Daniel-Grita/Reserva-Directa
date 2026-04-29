@@ -8,7 +8,7 @@ skills-lock.json
 # Project meta / design docs
 DESIGN_DOCUMENTATION.md
 PROJECT_SUMMARY.md
-Public/
+/Public/
 
 # Utility scripts
 scrape.js
