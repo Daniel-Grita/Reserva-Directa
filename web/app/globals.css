@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+@theme {
+  /* Colors */
+  --color-navy: #002F6D;
+  --color-orange: #FF9202;
+  --color-cream: #FAEFE0;
+  --color-light-blue: #F0F4FF;
+  --color-footer-bg: #0F1015;
+  --color-booking-blue: #3F7EE8;
+  --color-n-100: #F0F2F5;
+  --color-n-150: #F8F9FA;
+  --color-n-200: #E4E6EB;
+  --color-n-300: #D1D5DB;
+  --color-n-400: #BEC3CC;
+  --color-n-600: #65676B;
+  --color-n-900: #1C1E21;
+  --color-success-bg: #DCFCE7;
+  --color-success-fg: #166534;
+  --color-error-bg: #FEE2E2;
+  --color-error-fg: #991B1B;
+
+  /* Fonts */
+  --font-display: var(--font-bricolage), sans-serif;
+  --font-body: var(--font-figtree), sans-serif;
+
+  /* Type scale */
+  --text-display-xl: 64px;
+  --text-display-xl--line-height: 1.05;
+  --text-display-xl--font-weight: 800;
+  --text-display-lg: 48px;
+  --text-display-lg--line-height: 1.1;
+  --text-display-lg--font-weight: 800;
+  --text-display-md: 40px;
+  --text-display-md--line-height: 1.15;
+  --text-display-md--font-weight: 700;
+  --text-display-sm: 28px;
+  --text-display-sm--line-height: 1.25;
+  --text-display-sm--font-weight: 700;
+  --text-display-xs: 22px;
+  --text-display-xs--line-height: 1.3;
+  --text-display-xs--font-weight: 700;
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-base: 16px;
+  --text-body-base--line-height: 1.6;
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 1.55;
+  --text-label: 12px;
+  --text-label--line-height: 1.5;
+  --text-label--font-weight: 700;
+  --text-button: 14px;
+  --text-button--line-height: 1;
+  --text-button--font-weight: 700;
+  --text-caption: 12px;
+  --text-caption--line-height: 1.5;
+
+  /* Radius */
+  --radius-input: 6px;
+  --radius-btn: 8px;
+  --radius-faq: 8px;
+  --radius-card: 12px;
+  --radius-card-lg: 16px;
+
+  /* Shadows */
+  --shadow-card: 0 1px 2px rgba(28, 30, 33, 0.04);
+  --shadow-card-hover: 0 8px 24px rgba(28, 30, 33, 0.08);
+  --shadow-cta: 0 4px 14px rgba(255, 146, 2, 0.25);
+  --shadow-nav: 0 1px 0 rgba(0, 0, 0, 0.04);
+
+  /* Spacing tokens (drive py-, px-, gap-, etc.) */
+  --spacing-section-y: 64px;
+  --spacing-section-y-lg: 80px;
+  --spacing-section-y-sm: 56px;
+  --spacing-section-x: 120px;
+
+  /* Tracking */
+  --tracking-label: 0.15em;
+
+  /* Motion */
+  --animate-fade-up: fadeUp 600ms cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--color-n-200); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: var(--color-n-600); }
+
+/* Section container (responsive horizontal padding) */
+.section-container {
+  padding: 64px 120px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.section-container-lg {
+  padding: 80px 120px;
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+@media (max-width: 1024px) {
+  .section-container { padding: 64px 64px; }
+  .section-container-lg { padding: 80px 64px; }
+}
+
+@media (max-width: 768px) {
+  .section-container { padding: 48px 32px; }
+  .section-container-lg { padding: 56px 32px; }
+}
+
+@media (max-width: 640px) {
+  .section-container { padding: 40px 24px; }
+  .section-container-lg { padding: 48px 24px; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   Reveal system
+   Generic SSR-safe scroll-reveal pattern. Section components
+   set `data-reveal="false"` on their root and flip to `"true"`
+   the first time they enter the viewport (via useInView hook).
+   ────────────────────────────────────────────────────────── */
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+[data-reveal] .reveal-up,
+[data-reveal] .reveal-stagger > * {
+  opacity: 0;
+  transform: translateY(16px);
+}
+
+[data-reveal="true"] .reveal-up,
+[data-reveal="true"] .reveal-stagger > * {
+  animation: reveal-up 600ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+[data-reveal="true"] .reveal-stagger > *:nth-child(1) { animation-delay: 60ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(2) { animation-delay: 160ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(3) { animation-delay: 260ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(4) { animation-delay: 360ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(5) { animation-delay: 460ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(6) { animation-delay: 560ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(7) { animation-delay: 660ms; }
+[data-reveal="true"] .reveal-stagger > *:nth-child(n+8) { animation-delay: 760ms; }
+
+/* ──────────────────────────────────────────────────────────
+   Hero on-load reveal (no observer — above the fold)
+   ────────────────────────────────────────────────────────── */
+
+.hero-stagger > * {
+  animation: reveal-up 700ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+.hero-stagger > *:nth-child(1) { animation-delay: 80ms; }
+.hero-stagger > *:nth-child(2) { animation-delay: 200ms; }
+.hero-stagger > *:nth-child(3) { animation-delay: 320ms; }
+.hero-stagger > *:nth-child(4) { animation-delay: 440ms; }
+
+/* ──────────────────────────────────────────────────────────
+   Problem section bespoke delight (in addition to reveal)
+   - Animated highlighter on "15-25% de cada reserva"
+   - Trend icon reveal on the +ROI card
+   ────────────────────────────────────────────────────────── */
+
+.text-highlight {
+  background-image: linear-gradient(transparent 60%, rgba(255, 146, 2, 0.28) 60%);
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  background-position: 0 0;
+  transition: background-size 900ms cubic-bezier(0.65, 0, 0.35, 1) 450ms;
+  color: inherit;
+  font-weight: 600;
+  padding: 0 2px;
+}
+[data-reveal="true"] .text-highlight,
+.hero-stagger .text-highlight {
+  background-size: 100% 100%;
+}
+
+.problem-trend {
+  opacity: 0;
+  transform: translate(-6px, 4px);
+}
+[data-reveal="true"] .problem-trend {
+  animation: problem-trend-in 500ms cubic-bezier(0.16, 1, 0.3, 1) 720ms forwards;
+}
+@keyframes problem-trend-in {
+  to { opacity: 1; transform: translate(0, 0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  [data-reveal] .reveal-up,
+  [data-reveal] .reveal-stagger > *,
+  .hero-stagger > *,
+  .problem-trend {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
+  .text-highlight {
+    background-size: 100% 100%;
+    transition: none;
+  }
+}

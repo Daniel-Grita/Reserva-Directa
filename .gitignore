@@ -1,0 +1,14 @@
+# Tool/agent config
+.claude/
+.kiro/
+.agents/
+skills-lock.json
+.impeccable.md
+
+# Project meta / design docs
+DESIGN_DOCUMENTATION.md
+PROJECT_SUMMARY.md
+Public/
+
+# Utility scripts
+scrape.js
