@@ -22,6 +22,7 @@ type CommonProps = {
 
 type LinkButtonProps = CommonProps & {
   href: string;
+  onClick?: () => void;
 };
 
 type ButtonProps = CommonProps & {
@@ -30,9 +31,9 @@ type ButtonProps = CommonProps & {
   onClick?: () => void;
 };
 
-export function LinkButton({ variant = 'primary', className = '', href, children }: LinkButtonProps) {
+export function LinkButton({ variant = 'primary', className = '', href, onClick, children }: LinkButtonProps) {
   return (
-    <Link href={href} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+    <Link href={href} onClick={onClick} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
       {children}
     </Link>
   );

@@ -17,8 +17,8 @@ export default function BookingSystem() {
             <div className="text-label font-body uppercase tracking-label text-orange mb-4">
               {bookingSystem.label}
             </div>
-            <h2 className="text-display-md lg:text-display-lg font-display text-navy mb-6">
-              {bookingSystem.heading[0]}<br />{bookingSystem.heading[1]}
+            <h2 className="text-display-md lg:text-display-lg font-display text-navy mb-6 text-balance">
+              {bookingSystem.heading}
             </h2>
             <p className="text-body-base font-body text-n-600">
               {withHighlight(bookingSystem.intro, 'sem intermediários')}
@@ -33,7 +33,7 @@ export default function BookingSystem() {
             ))}
           </div>
 
-          <LinkButton href="#contacto" variant="primary">
+          <LinkButton href="/a-nossa-solucao#contacto" variant="primary">
             Falar connosco sobre reservas diretas
           </LinkButton>
         </div>
@@ -46,8 +46,8 @@ function BookingWidgetMockup() {
   return (
     <div className="bg-booking-blue rounded-card-lg p-6 lg:p-8 mb-6">
       <div className="grid grid-cols-1 md:grid-cols-[1fr_1fr_auto] gap-4 items-end">
-        <DateField label="Check In" value="26 Sun 2026" />
-        <DateField label="Check Out" value="26 Sun 2026" />
+        <DateField label="Check In" value="26 Sex 2026" />
+        <DateField label="Check Out" value="30 Ter 2026" />
         <button
           type="button"
           className="bg-orange text-white text-button font-body font-bold px-10 py-3.5 rounded-input hover:opacity-90 transition-all duration-base"

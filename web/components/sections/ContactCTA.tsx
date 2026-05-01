@@ -10,6 +10,26 @@ const inputClasses =
 
 const labelClasses = 'block text-body-sm font-body font-bold text-navy mb-2';
 
+const FALLBACK_EMAIL = 'agenciareservadireta@gmail.com';
+
+function formatPhone(input: string): string {
+  const digits = input.replace(/\D/g, '');
+  const local = digits.startsWith('351') ? digits.slice(3) : digits;
+  const truncated = local.slice(0, 9);
+  if (!truncated) return '';
+  const parts: string[] = [];
+  parts.push(truncated.slice(0, 3));
+  if (truncated.length > 3) parts.push(truncated.slice(3, 6));
+  if (truncated.length > 6) parts.push(truncated.slice(6, 9));
+  return `+351 ${parts.join(' ')}`;
+}
+
+function RequiredMark() {
+  return (
+    <span aria-hidden className="text-orange ml-0.5">*</span>
+  );
+}
+
 export default function ContactCTA() {
   const [formData, setFormData] = useState({
     nome: '',
@@ -17,6 +37,7 @@ export default function ContactCTA() {
     email: '',
     comentario: '',
   });
+  const [honeypot, setHoneypot] = useState('');
   const [status, setStatus] = useState<'idle' | 'loading' | 'success' | 'error'>('idle');
   const [ref, inView] = useInView<HTMLElement>();
 
@@ -24,11 +45,16 @@ export default function ContactCTA() {
     e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
   ) => {
     const { name, value } = e.target;
+    if (name === 'telemovel') {
+      setFormData(prev => ({ ...prev, telemovel: formatPhone(value) }));
+      return;
+    }
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (honeypot) return;
     setStatus('loading');
 
     try {
@@ -36,7 +62,7 @@ export default function ContactCTA() {
       const response = await fetch(`https://formspree.io/f/${formspreeId}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({ ...formData, _gotcha: honeypot }),
       });
 
       if (response.ok) {
@@ -44,12 +70,11 @@ export default function ContactCTA() {
         setFormData({ nome: '', telemovel: '', email: '', comentario: '' });
         setTimeout(() => setStatus('idle'), 5000);
       } else {
+        // Error persists until next submit so the mailto fallback stays readable.
         setStatus('error');
-        setTimeout(() => setStatus('idle'), 5000);
       }
     } catch {
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
     }
   };
 
@@ -67,10 +92,10 @@ export default function ContactCTA() {
           </div>
 
           <div className="bg-white rounded-card-lg p-8 lg:p-10">
-            <form onSubmit={handleSubmit} className="space-y-5">
+            <form onSubmit={handleSubmit} className="space-y-5" noValidate>
               <div>
                 <label htmlFor="nome" className={labelClasses}>
-                  {contactCTA.fields.nome.label}
+                  {contactCTA.fields.nome.label}<RequiredMark />
                 </label>
                 <input
                   type="text"
@@ -80,13 +105,14 @@ export default function ContactCTA() {
                   onChange={handleChange}
                   placeholder={contactCTA.fields.nome.placeholder}
                   required
+                  aria-required="true"
                   className={inputClasses}
                 />
               </div>
 
               <div>
                 <label htmlFor="telemovel" className={labelClasses}>
-                  {contactCTA.fields.telemovel.label}
+                  {contactCTA.fields.telemovel.label}<RequiredMark />
                 </label>
                 <input
                   type="tel"
@@ -94,15 +120,18 @@ export default function ContactCTA() {
                   name="telemovel"
                   value={formData.telemovel}
                   onChange={handleChange}
-                  placeholder={contactCTA.fields.telemovel.placeholder}
+                  placeholder="+351 912 345 678"
+                  inputMode="tel"
+                  autoComplete="tel"
                   required
+                  aria-required="true"
                   className={inputClasses}
                 />
               </div>
 
               <div>
                 <label htmlFor="email" className={labelClasses}>
-                  {contactCTA.fields.email.label}
+                  {contactCTA.fields.email.label}<RequiredMark />
                 </label>
                 <input
                   type="email"
@@ -111,14 +140,16 @@ export default function ContactCTA() {
                   value={formData.email}
                   onChange={handleChange}
                   placeholder={contactCTA.fields.email.placeholder}
+                  autoComplete="email"
                   required
+                  aria-required="true"
                   className={inputClasses}
                 />
               </div>
 
               <div>
                 <label htmlFor="comentario" className={labelClasses}>
-                  {contactCTA.fields.comentario.label}
+                  {contactCTA.fields.comentario.label}<RequiredMark />
                 </label>
                 <textarea
                   id="comentario"
@@ -127,24 +158,46 @@ export default function ContactCTA() {
                   onChange={handleChange}
                   placeholder={contactCTA.fields.comentario.placeholder}
                   rows={4}
+                  required
+                  aria-required="true"
                   className={`${inputClasses} resize-none`}
                 />
               </div>
 
-              {status === 'success' && (
-                <div className="p-4 bg-success-bg rounded-input">
-                  <p className="text-body-sm font-body text-success-fg">
-                    Mensagem enviada com sucesso! Entraremos em contacto em breve.
-                  </p>
-                </div>
-              )}
-              {status === 'error' && (
-                <div className="p-4 bg-error-bg rounded-input">
-                  <p className="text-body-sm font-body text-error-fg">
-                    Erro ao enviar mensagem. Tente novamente.
-                  </p>
-                </div>
-              )}
+              <div className="hidden" aria-hidden>
+                <label htmlFor="_gotcha">Não preencha este campo</label>
+                <input
+                  type="text"
+                  id="_gotcha"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  value={honeypot}
+                  onChange={(e) => setHoneypot(e.target.value)}
+                />
+              </div>
+
+              <div role="status" aria-live="polite" className="empty:hidden">
+                {status === 'success' && (
+                  <div className="p-4 bg-success-bg rounded-input">
+                    <p className="text-body-sm font-body text-success-fg">
+                      Mensagem enviada com sucesso! Entraremos em contacto em breve.
+                    </p>
+                  </div>
+                )}
+                {status === 'error' && (
+                  <div className="p-4 bg-error-bg rounded-input space-y-2">
+                    <p className="text-body-sm font-body text-error-fg">
+                      Erro ao enviar mensagem. Tente novamente, ou contacte-nos directamente:
+                    </p>
+                    <p className="text-body-sm font-body text-error-fg">
+                      <a href={`mailto:${FALLBACK_EMAIL}`} className="font-bold underline hover:no-underline">
+                        {FALLBACK_EMAIL}
+                      </a>
+                    </p>
+                  </div>
+                )}
+              </div>
 
               <button
                 type="submit"

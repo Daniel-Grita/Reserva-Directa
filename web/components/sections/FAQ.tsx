@@ -7,8 +7,23 @@ import { useInView } from '@/lib/useInView';
 import { withHighlight } from '@/lib/highlight';
 
 export default function FAQ() {
-  const [openIndex, setOpenIndex] = useState<number | null>(null);
+  const [openIndices, setOpenIndices] = useState<Set<number>>(new Set());
   const [ref, inView] = useInView<HTMLElement>();
+
+  const allOpen = openIndices.size === faq.items.length;
+
+  const toggleOne = (i: number) => {
+    setOpenIndices((prev) => {
+      const next = new Set(prev);
+      if (next.has(i)) next.delete(i);
+      else next.add(i);
+      return next;
+    });
+  };
+
+  const toggleAll = () => {
+    setOpenIndices(allOpen ? new Set() : new Set(faq.items.map((_, i) => i)));
+  };
 
   return (
     <section ref={ref} data-reveal={inView} className="bg-white py-section-y">
@@ -21,9 +36,20 @@ export default function FAQ() {
           />
         </div>
 
+        <div className="reveal-up flex justify-end mb-4">
+          <button
+            type="button"
+            onClick={toggleAll}
+            aria-expanded={allOpen}
+            className="text-body-sm font-body font-bold text-orange hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-input px-2 py-1 -mr-2"
+          >
+            {allOpen ? 'Recolher todas' : 'Expandir todas'}
+          </button>
+        </div>
+
         <div className="reveal-stagger space-y-4">
           {faq.items.map((item, i) => {
-            const isOpen = openIndex === i;
+            const isOpen = openIndices.has(i);
             const buttonId = `faq-trigger-${i}`;
             const panelId = `faq-panel-${i}`;
             return (
@@ -36,8 +62,8 @@ export default function FAQ() {
                   type="button"
                   aria-expanded={isOpen}
                   aria-controls={panelId}
-                  onClick={() => setOpenIndex(isOpen ? null : i)}
-                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-n-100 transition-colors duration-base"
+                  onClick={() => toggleOne(i)}
+                  className="w-full px-6 py-4 text-left flex items-center justify-between hover:bg-n-100 transition-colors duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white"
                 >
                   <h3 className="text-body-base font-display font-bold text-navy flex-1">
                     {item.question}

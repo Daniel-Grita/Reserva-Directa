@@ -47,6 +47,11 @@ export default function Footer() {
                     </Link>
                   </li>
                 ))}
+                {column.text?.map((entry, j) => (
+                  <li key={`t-${j}`} className="text-body-sm font-body text-white/60">
+                    {entry}
+                  </li>
+                ))}
               </ul>
             </div>
           ))}

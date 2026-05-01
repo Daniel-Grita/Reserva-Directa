@@ -16,7 +16,7 @@ export const metadata: Metadata = {
 
 export default function ANossaSolucaoPage() {
   return (
-    <main className="w-full">
+    <main id="main" tabIndex={-1} className="w-full focus:outline-none">
       <Navbar />
       <SolucaoHero />
       <SolucaoStats />

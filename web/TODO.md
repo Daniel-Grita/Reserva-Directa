@@ -6,7 +6,7 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 
 ## P0 — Blockers
 
-- [ ] **Mobile navigation is broken.** `Navbar.tsx` uses `hidden md:flex` for nav links and `hidden sm:inline-block` for the CTA, with no hamburger fallback. Below 768px users see only the logo. Add a Disclosure-pattern hamburger with `aria-expanded`, slide-down panel containing navItems + the "Agendar Reunião" CTA.
+- [x] **Mobile navigation.** Hamburger button (md:hidden) + drop-down panel below the 72px bar containing the four navItems and the "Agendar Reunião" CTA. `aria-expanded` / `aria-controls`, Escape closes + returns focus to toggle, click-outside closes, body scroll locked while open, panel auto-closes on `pathname` change. Desktop CTA bumped from `sm:` → `md:` so the 640–768 dead zone is gone.
 
 ## P1 — High impact
 
@@ -19,10 +19,10 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 
 ## P2 — Polish
 
-- [ ] **Form a11y + recovery is thin.** `ContactCTA.tsx` shows generic error with no fallback channel. Add `aria-live="polite"` on status region, surface email + WhatsApp fallback in the error state, mask `+351 ___ ___ ___` on the phone field, add visual asterisks on required fields, make `comentário` required, add a honeypot.
-- [ ] **Multiple CTAs all collapse to `#contacto`.** Hero, BookingSystem, Services Descobre-mais, ServicesPageGrid Saber-mais, navbar Agendar Reunião all → same anchor. Differentiate intent: BookingSystem CTA → `/a-nossa-solucao#contacto`; Service "Saber mais" → eventual `/servicos/[slug]`; reserve "Agendar Reunião" for a real calendar link (Calendly).
-- [ ] **Footer Navegação column missing pages.** Add `/quem-somos` and `/a-nossa-solucao` (currently absent).
-- [ ] **Footer "Lisboa, Portugal" link is `href="#"`** (dead). Either remove the link wrapper or make it a real maps URL.
+- [x] **Form a11y + recovery.** `aria-live="polite"` status region, email fallback (`agenciareservadireta@gmail.com`) in error state, `+351 XXX XXX XXX` mask on phone, orange asterisks on all four required labels, `comentario` now required, Formspree `_gotcha` honeypot. WhatsApp fallback deferred — no number available.
+- [~] **CTAs differentiation.** BookingSystem CTA → `/a-nossa-solucao#contacto`. Remaining: Service "Saber mais" → `/servicos/[slug]` (blocked: routes don't exist yet); "Agendar Reunião" → Calendly (blocked: no Calendly URL).
+- [x] **Footer Navegação column missing pages.** Added `/a-nossa-solucao` (`/quem-somos` was already present).
+- [x] **Footer "Lisboa, Portugal" link is `href="#"`** (dead). Now rendered as plain text via a `text[]` field on the Contacto column.
 - [ ] **Add tooltips/glossary for jargon.** "PCI Compliant", "Channel Manager", "OTAs", "Premier Connectivity Partner" need translation for non-technical owners (Sofia persona).
 - [ ] **No human element before the form.** Surface a face/name/phone/WhatsApp on the landing page before the contact section. Sofia's biggest fear is "another vendor that doesn't return calls".
 - [x] **Card title hierarchy.** `Services.tsx` and `BlogPreview.tsx` card `h3`s bumped to `text-display-xs` (22px) to match CaseStudies cards.
@@ -32,15 +32,15 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 
 ## P3 — Nice to have
 
-- [ ] **`bookingSystem.heading` split via `<br />`** is fragile on mobile and breaks `text-balance`. Use a CSS approach or non-breaking spaces instead.
-- [ ] **BookingWidget mockup polish.** `DateField` shows `26 Sun 2026` for both check-in and check-out (same date) and `Sun` is in English on a PT site. Make check-out a later date and translate the day abbreviation.
-- [ ] **No `focus-visible` ring on the FAQ trigger button.** Add one for keyboard users.
-- [ ] **No skip-to-content link in `layout.tsx`.** Add one for screen-reader users.
+- [x] **`bookingSystem.heading` split via `<br />`** — collapsed to a single string with `text-balance` on the h2.
+- [x] **BookingWidget mockup polish.** Check-In `26 Sex 2026` / Check-Out `30 Ter 2026` (PT day abbreviations, 4-night span).
+- [x] **`focus-visible` ring on the FAQ trigger button.** Orange ring with white offset.
+- [x] **Skip-to-content link in `layout.tsx`.** Targets `#main`; each page's existing `<main>` got `id="main"` + `tabIndex={-1}`.
 - [ ] **`text-display-xs` (22px) double duty** as both card title and section sub-heading. Introduce a distinct token or bump cards down a step.
 - [ ] **No scroll-progress indicator on long sub-pages** (`/a-nossa-solucao` is ~6 sections).
 - [ ] **No anchored TOC on long sub-pages.**
-- [ ] **No "expand all" on FAQ.**
-- [ ] **`schema.org` markup missing.** Add `LocalBusiness` / `Service` JSON-LD for SEO.
+- [x] **"Expand all" on FAQ.** Multi-open accordion with "Expandir todas / Recolher todas" toggle.
+- [x] **`schema.org` markup.** `LocalBusiness` JSON-LD in `app/layout.tsx` (name, url, email, address, areaServed, sameAs socials).
 - [ ] **OG image not set** in `layout.tsx`. Add for social sharing previews.
 - [x] **Navbar active-section indicator.** Added `useActiveSection` hook + orange underline.
 - [x] **Hover translate timidity.** Bumped card hover translates from `-translate-y-0.5` → `-translate-y-1`.
@@ -68,4 +68,4 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 
 ---
 
-**Last updated:** 2026-04-30
+**Last updated:** 2026-05-01

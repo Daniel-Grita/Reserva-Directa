@@ -114,7 +114,7 @@ export const problem = {
 
 export const bookingSystem = {
   label: "SISTEMA DE RESERVAS",
-  heading: ["O seu próprio motor de reservas.", "Apenas 5% por reserva."],
+  heading: "O seu próprio motor de reservas. Apenas 5% por reserva.",
   intro:
     "Integramos o CultBooking, um motor de reservas profissional e otimizado para conversões, diretamente no seu website. Os seus hóspedes reservam sem sair do seu site, sem intermediários, e você mantém o controlo total.",
   trustBadges: [
@@ -420,6 +420,9 @@ export const contactCTA = {
   submit: "Enviar Mensagem",
 };
 
+type FooterLink = { label: string; href: string };
+type FooterColumn = { title: string; links: FooterLink[]; text?: string[] };
+
 export const footer = {
   brand: "Reserva Direta",
   tagline:
@@ -429,19 +432,20 @@ export const footer = {
       title: "Contacto",
       links: [
         { label: "agenciareservadireta@gmail.com", href: "mailto:agenciareservadireta@gmail.com" },
-        { label: "Lisboa, Portugal", href: "#" },
       ],
+      text: ["Lisboa, Portugal"],
     },
     {
       title: "Navegação",
       links: [
         { label: "Quem Somos", href: "/quem-somos" },
         { label: "Serviços", href: "/servicos" },
+        { label: "A Nossa Solução", href: "/a-nossa-solucao" },
         { label: "Blog", href: "/#blog" },
         { label: "Contacto", href: "#contacto" },
       ],
     },
-  ],
+  ] as FooterColumn[],
   socials: [
     {
       label: "Facebook",

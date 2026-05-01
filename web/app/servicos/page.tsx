@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ServicosPage() {
   return (
-    <main className="w-full">
+    <main id="main" tabIndex={-1} className="w-full focus:outline-none">
       <Navbar />
       <ServicesPageHero />
       <ServicesPageGrid />

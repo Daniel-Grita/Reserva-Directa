@@ -12,7 +12,7 @@ import Footer from '@/components/Footer';
 
 export default function Home() {
   return (
-    <main className="w-full">
+    <main id="main" tabIndex={-1} className="w-full focus:outline-none">
       <Navbar />
       <Hero />
       <Problem />
