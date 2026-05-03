@@ -26,7 +26,7 @@ function formatPhone(input: string): string {
 
 function RequiredMark() {
   return (
-    <span aria-hidden className="text-orange ml-0.5">*</span>
+    <span aria-hidden className="text-orange-text ml-0.5">*</span>
   );
 }
 

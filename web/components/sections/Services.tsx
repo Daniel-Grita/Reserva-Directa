@@ -45,14 +45,14 @@ export default function Services() {
             href="/servicos"
             className="group bg-navy rounded-card p-6 shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-slow flex flex-col justify-between min-h-[180px]"
           >
-            <div className="w-10 h-10 rounded-full bg-orange/15 flex items-center justify-center mb-4 text-orange">
+            <div className="w-10 h-10 rounded-full bg-orange/15 flex items-center justify-center mb-4 text-orange-text">
               <ArrowRightIcon />
             </div>
             <div>
               <h3 className="text-display-xs font-display text-white mb-2 leading-tight">
                 Descobre mais sobre os nossos serviços
               </h3>
-              <span className="text-button font-body font-bold text-orange inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-[gap] duration-base">
+              <span className="text-button font-body font-bold text-orange-text inline-flex items-center gap-1.5 group-hover:gap-2.5 transition-[gap] duration-base">
                 Ver todos
                 <ArrowRightIcon className="w-3.5 h-3.5" />
               </span>

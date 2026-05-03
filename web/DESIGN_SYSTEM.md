@@ -10,7 +10,8 @@ Source of truth for tokens and component variants. **Tailwind v4** — there is 
 | Token | Hex | Tailwind class | CSS var |
 |---|---|---|---|
 | `navy` | `#002F6D` | `bg-navy` `text-navy` | `--navy` |
-| `orange` | `#FF9202` | `bg-orange` `text-orange` | `--orange` |
+| `orange` | `#FF9202` | `bg-orange` (fills only) | `--orange` |
+| `orange-text` | `#A8580A` | `text-orange-text` (text/icons on light bg, ≥4.5:1 vs white) | `--orange-text` |
 | `cream` | `#FAEFE0` | `bg-cream` | `--cream` |
 | `light-blue` | `#F0F4FF` | `bg-light-blue` | `--light-blue` |
 | `footer-bg` | `#0F1015` | `bg-footer-bg` | `--footer-bg` |

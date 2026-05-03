@@ -41,7 +41,7 @@ export default function FAQ() {
             type="button"
             onClick={toggleAll}
             aria-expanded={allOpen}
-            className="text-body-sm font-body font-bold text-orange hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-input px-2 py-1 -mr-2"
+            className="text-body-sm font-body font-bold text-orange-text hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white rounded-input px-2 py-1 -mr-2"
           >
             {allOpen ? 'Recolher todas' : 'Expandir todas'}
           </button>
@@ -68,7 +68,7 @@ export default function FAQ() {
                   <h3 className="text-body-base font-display font-bold text-navy flex-1">
                     {item.question}
                   </h3>
-                  <span aria-hidden className="text-orange font-bold text-xl flex-shrink-0 ml-4">
+                  <span aria-hidden className="text-orange-text font-bold text-xl flex-shrink-0 ml-4">
                     {isOpen ? '−' : '+'}
                   </span>
                 </button>

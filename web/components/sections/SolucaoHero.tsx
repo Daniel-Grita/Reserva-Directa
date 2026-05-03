@@ -20,7 +20,7 @@ export default function SolucaoHero() {
             <img src={image.src} alt={image.alt} loading="eager" className="w-full h-full object-cover" />
           </div>
 
-          <p className="text-display-xs font-display text-orange">{tagline}</p>
+          <p className="text-display-xs font-display text-orange-text">{tagline}</p>
 
           <p className="text-body-base font-body text-n-600 max-w-2xl mx-auto">{intro}</p>
         </div>

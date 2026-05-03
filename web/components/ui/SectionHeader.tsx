@@ -7,6 +7,7 @@ type Props = {
   align?: 'left' | 'center';
   onDark?: boolean;
   className?: string;
+  as?: 'h1' | 'h2' | 'h3';
 };
 
 export default function SectionHeader({
@@ -16,6 +17,7 @@ export default function SectionHeader({
   align = 'left',
   onDark = false,
   className = '',
+  as: HeadingTag = 'h2',
 }: Props) {
   const alignCls = align === 'center' ? 'text-center mx-auto' : '';
   const headingColor = onDark ? 'text-white' : 'text-navy';
@@ -24,15 +26,15 @@ export default function SectionHeader({
   return (
     <div className={`max-w-3xl mb-16 ${alignCls} ${className}`}>
       {label && (
-        <div className="text-label font-body uppercase tracking-label text-orange mb-4">
+        <div className="text-label font-body uppercase tracking-label text-orange-text mb-4">
           {label}
         </div>
       )}
-      <h2
+      <HeadingTag
         className={`text-display-md lg:text-display-lg font-display ${headingColor} ${intro ? 'mb-6' : ''}`}
       >
         {heading}
-      </h2>
+      </HeadingTag>
       {intro && (
         <p className={`text-body-base font-body ${introColor}`}>{intro}</p>
       )}

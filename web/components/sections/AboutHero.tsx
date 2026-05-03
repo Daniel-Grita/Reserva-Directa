@@ -11,7 +11,7 @@ export default function AboutHero() {
     <section ref={ref} data-reveal={inView} className="bg-white pt-[112px] pb-section-y">
       <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-stretch">
         <div className="reveal-up space-y-6">
-          <div className="text-label font-body uppercase tracking-label text-orange">
+          <div className="text-label font-body uppercase tracking-label text-orange-text">
             {label}
           </div>
           <h1 className="text-display-md lg:text-display-lg font-display text-navy">

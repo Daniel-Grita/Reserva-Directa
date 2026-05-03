@@ -4,6 +4,7 @@
   /* Colors */
   --color-navy: #002F6D;
   --color-orange: #FF9202;
+  --color-orange-text: #A8580A;
   --color-cream: #FAEFE0;
   --color-light-blue: #F0F4FF;
   --color-footer-bg: #0F1015;
@@ -73,6 +74,7 @@
   --spacing-section-y-lg: 80px;
   --spacing-section-y-sm: 56px;
   --spacing-section-x: 120px;
+  --spacing-page-top: 112px;
 
   /* Tracking */
   --tracking-label: 0.15em;

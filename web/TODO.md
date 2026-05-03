@@ -23,6 +23,7 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 - [~] **CTAs differentiation.** BookingSystem CTA → `/a-nossa-solucao#contacto`. Remaining: Service "Saber mais" → `/servicos/[slug]` (blocked: routes don't exist yet); "Agendar Reunião" → Calendly (blocked: no Calendly URL).
 - [x] **Footer Navegação column missing pages.** Added `/a-nossa-solucao` (`/quem-somos` was already present).
 - [x] **Footer "Lisboa, Portugal" link is `href="#"`** (dead). Now rendered as plain text via a `text[]` field on the Contacto column.
+- [x] **Orange label contrast (systemic).** Introduced `--color-orange-text: #A8580A` (4.95:1 on white, passes WCAG AA). Renamed all `text-orange` → `text-orange-text` site-wide (18 files, includes section eyebrows, navbar active state, link CTAs, checkmark icons, FAQ accordion glyphs, stat cards). Brand `--color-orange` (`bg-orange`) preserved for fills, button surfaces, focus rings, and the `.text-highlight` decorative sweep.
 - [ ] **Add tooltips/glossary for jargon.** "PCI Compliant", "Channel Manager", "OTAs", "Premier Connectivity Partner" need translation for non-technical owners (Sofia persona).
 - [ ] **No human element before the form.** Surface a face/name/phone/WhatsApp on the landing page before the contact section. Sofia's biggest fear is "another vendor that doesn't return calls".
 - [x] **Card title hierarchy.** `Services.tsx` and `BlogPreview.tsx` card `h3`s bumped to `text-display-xs` (22px) to match CaseStudies cards.
@@ -52,6 +53,7 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 - [x] `/quem-somos` — about page (AboutHero, AboutTeam, AboutValues, ContactCTA, Footer). Team photos shipped.
 - [x] `/servicos` — services overview page (ServicesPageHero, ServicesPageGrid).
 - [x] `/a-nossa-solucao` — booking-engine deep dive (SolucaoHero, SolucaoStats, SolucaoSteps, SolucaoFeatures, SolucaoTrust).
+- [x] `/casos-de-uso` — real client showcase (UseCasesGoogle 3-col grid + UseCasesBooking vertical stack), each ending in a `StatCard` with count-up stat (−€10 / 1–2 weeks) and `text-highlight` punchline. Uses real screenshots in `public/use-cases/` (compressed to ~280–390 KB).
 - [ ] `/servicos/[slug]` — 5 service detail pages (branding, website, marketing-digital, tecnologia, fidelizacao). Pattern: hero · what's included · how it works · pricing (if applicable) · FAQ · contact CTA.
 - [ ] `/blog` — listing page (3-col grid).
 - [ ] `/blog/[slug]` — article template.
@@ -68,4 +70,4 @@ Backlog of known fixes and follow-ups. Group by priority. Tick as you go.
 
 ---
 
-**Last updated:** 2026-05-01
+**Last updated:** 2026-05-03

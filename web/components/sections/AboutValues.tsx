@@ -20,7 +20,7 @@ export default function AboutValues() {
               key={v.title}
               className="bg-light-blue rounded-card-lg p-8 transition-all duration-slow hover:-translate-y-1 hover:shadow-card-hover"
             >
-              <div className="w-12 h-12 rounded-card bg-orange/10 text-orange flex items-center justify-center mb-6">
+              <div className="w-12 h-12 rounded-card bg-orange/10 text-orange-text flex items-center justify-center mb-6">
                 <ServiceIcon name={v.icon as IconName} className="w-6 h-6" />
               </div>
               <h3 className="text-display-xs font-display text-navy mb-3">

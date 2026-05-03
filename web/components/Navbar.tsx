@@ -83,7 +83,7 @@ export default function Navbar() {
           />
         </Link>
 
-        <div className="hidden lg:flex gap-8">
+        <div className="hidden xl:flex gap-8">
           {navItems.map((item) => {
             const id = getAnchorId(item.href);
             const isActive = id !== null && id === active;
@@ -108,9 +108,11 @@ export default function Navbar() {
           })}
         </div>
 
-        <LinkButton href="#contacto" variant="primary" className="hidden lg:inline-block">
-          Agendar Reunião
-        </LinkButton>
+        <span className="hidden xl:inline-block">
+          <LinkButton href="#contacto" variant="primary">
+            Agendar Reunião
+          </LinkButton>
+        </span>
 
         <button
           ref={toggleRef}
@@ -119,7 +121,7 @@ export default function Navbar() {
           aria-controls="mobile-nav-panel"
           aria-label={open ? 'Fechar menu' : 'Abrir menu'}
           onClick={() => setOpen((prev) => !prev)}
-          className="lg:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-input text-navy hover:bg-n-100 transition-colors duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white"
+          className="xl:hidden inline-flex items-center justify-center w-10 h-10 -mr-2 rounded-input text-navy hover:bg-n-100 transition-colors duration-base focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-orange focus-visible:ring-offset-2 focus-visible:ring-offset-white"
         >
           {open ? <CloseIcon /> : <HamburgerIcon />}
         </button>
@@ -129,7 +131,7 @@ export default function Navbar() {
         ref={panelRef}
         id="mobile-nav-panel"
         hidden={!open}
-        className="lg:hidden fixed inset-x-0 top-[72px] bottom-0 bg-white border-t border-n-150 overflow-y-auto"
+        className="xl:hidden fixed inset-x-0 top-[72px] bottom-0 bg-white border-t border-n-150 overflow-y-auto"
       >
         <div className="px-6 sm:px-8 py-6 flex flex-col gap-1">
           {navItems.map((item, i) => {
@@ -143,7 +145,7 @@ export default function Navbar() {
                 aria-current={isActive ? 'page' : undefined}
                 onClick={closeMenu}
                 className={`text-display-xs font-display py-3 border-b border-n-150 transition-colors duration-base ${
-                  isActive ? 'text-orange' : 'text-navy hover:text-orange'
+                  isActive ? 'text-orange-text' : 'text-navy hover:text-orange-text'
                 }`}
               >
                 {item.label}

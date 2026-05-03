@@ -9,7 +9,7 @@ export default function SolucaoSteps() {
   return (
     <section ref={ref} data-reveal={inView} className="bg-light-blue py-section-y">
       <div className="section-container">
-        <div className="reveal-up text-label font-body uppercase tracking-label text-orange mb-4">
+        <div className="reveal-up text-label font-body uppercase tracking-label text-orange-text mb-4">
           {solucaoPage.steps.label}
         </div>
         <h2 className="reveal-up text-display-md lg:text-display-lg font-display text-navy mb-12">

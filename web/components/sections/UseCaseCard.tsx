@@ -7,14 +7,15 @@ type Props = {
   label: string;
   image?: ImageProp;
   imageAlt?: string;
+  priority?: boolean;
   // Placeholder fallback (used when image is undefined)
   aspect?: string;
   icon?: ReactNode;
 };
 
-export default function UseCaseCard({ label, image, imageAlt, aspect, icon }: Props) {
+export default function UseCaseCard({ label, image, imageAlt, priority, aspect, icon }: Props) {
   return (
-    <figure className="group bg-white rounded-card-lg border border-n-200 shadow-card overflow-hidden flex flex-col transition-all duration-slow hover:shadow-card-hover hover:-translate-y-1">
+    <figure className="bg-white rounded-card-lg border border-n-200 shadow-card overflow-hidden flex flex-col transition-shadow duration-slow hover:shadow-card-hover">
       {image ? (
         <Image
           src={image.src}
@@ -23,6 +24,7 @@ export default function UseCaseCard({ label, image, imageAlt, aspect, icon }: Pr
           height={image.height}
           sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
           className="w-full h-auto"
+          priority={priority}
         />
       ) : (
         <div className={`${aspect ?? 'aspect-[4/3]'} bg-n-100 flex flex-col items-center justify-center gap-3 text-n-400`}>

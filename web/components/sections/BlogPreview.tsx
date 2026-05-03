@@ -41,7 +41,7 @@ export default function BlogPreview() {
                 </h3>
                 <a
                   href="#"
-                  className="text-button font-body font-bold text-orange hover:underline transition-all duration-base"
+                  className="text-button font-body font-bold text-orange-text hover:underline transition-all duration-base"
                 >
                   {article.cta}
                 </a>

@@ -20,7 +20,7 @@ export default function Problem() {
     <section ref={ref} data-reveal={inView} className="bg-white py-section-y">
       <div className="section-container grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
         <div className="reveal-up space-y-6">
-          <div className="text-label font-body uppercase tracking-label text-orange">
+          <div className="text-label font-body uppercase tracking-label text-orange-text">
             {problem.label}
           </div>
           <h2 className="text-display-md lg:text-display-lg font-display text-navy">
@@ -62,7 +62,7 @@ const PANEL_STYLES = {
   brand: {
     wrapper: 'bg-navy text-white',
     label: 'text-white/60',
-    number: 'text-orange',
+    number: 'text-orange-text',
     caption: 'text-white',
     note: 'text-white/60',
   },

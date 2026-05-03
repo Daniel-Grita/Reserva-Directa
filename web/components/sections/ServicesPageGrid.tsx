@@ -10,7 +10,7 @@ export default function ServicesPageGrid() {
   return (
     <section ref={ref} data-reveal={inView} id="servicos" className="bg-white py-section-y">
       <div className="section-container">
-        <div className="reveal-up text-label font-body uppercase tracking-label text-orange mb-8">
+        <div className="reveal-up text-label font-body uppercase tracking-label text-orange-text mb-8">
           {servicesPage.label}
         </div>
 
@@ -33,15 +33,18 @@ export default function ServicesPageGrid() {
                 <h2 className="text-display-xs font-display text-navy mb-3">
                   {card.title}
                 </h2>
-                <p className="text-body-sm font-body text-n-600 mb-4">
+                <p className="text-body-sm font-body text-n-600">
                   {card.description}
                 </p>
-                <Link
-                  href="#contacto"
-                  className="inline-flex items-center gap-1 text-body-sm font-body font-bold text-orange hover:gap-2 transition-all duration-base"
-                >
-                  Saber mais <span aria-hidden>→</span>
-                </Link>
+                {'link' in card && card.link && (
+                  <Link
+                    href={card.link.href}
+                    {...(card.link.external ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
+                    className="inline-flex items-center gap-1 text-body-sm font-body font-bold text-orange-text hover:gap-2 transition-all duration-base mt-4"
+                  >
+                    {card.link.label} <span aria-hidden>→</span>
+                  </Link>
+                )}
               </div>
             </article>
           ))}

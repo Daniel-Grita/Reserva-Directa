@@ -31,7 +31,7 @@ export default function AboutTeam() {
               <h3 className="text-display-xs font-display text-navy mb-1">
                 {m.name}
               </h3>
-              <p className="text-body-sm font-body font-bold text-orange mb-3">
+              <p className="text-body-sm font-body font-bold text-orange-text mb-3">
                 {m.role}
               </p>
               <p className="text-body-sm font-body text-n-600">{m.bio}</p>

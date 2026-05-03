@@ -257,35 +257,51 @@ export const servicesPage = {
       title: "Design Gráfico & Branding",
       description:
         "Criamos ou revitalizamos a identidade visual do seu alojamento, desde o logo até aos materiais de comunicação, para que se destaque no mercado.",
-      image: { src: "https://picsum.photos/seed/rd-branding/600/360", alt: "Identidade visual e branding" },
+      image: {
+        src: "https://images.unsplash.com/photo-1626785774573-4b799315345d?auto=format&fit=crop&w=900&q=80",
+        alt: "Materiais de branding e design sobre uma secretária",
+      },
+      link: { label: "Ver portfólio", href: "https://daniel-grita-portfolio.vercel.app/", external: true },
     },
     {
       slug: "website",
       title: "Website Profissional",
       description:
         "Website rápido, otimizado para conversões e pensado para receber reservas diretas. Fica com a propriedade completa do código, domínio e hosting.",
-      image: { src: "https://picsum.photos/seed/rd-website/600/360", alt: "Website profissional" },
+      image: {
+        src: "https://images.unsplash.com/photo-1499951360447-b19be8fe80f5?auto=format&fit=crop&w=900&q=80",
+        alt: "Computador portátil sobre uma secretária com um website aberto",
+      },
     },
     {
       slug: "marketing-digital",
       title: "Marketing Digital",
       description:
         "Gestão de redes sociais, otimização de perfis nas OTAs e criação de conteúdo estratégico para atrair mais viajantes e converter.",
-      image: { src: "https://picsum.photos/seed/rd-marketing/600/360", alt: "Marketing digital" },
+      image: {
+        src: "https://images.unsplash.com/photo-1432888622747-4eb9a8efeb07?auto=format&fit=crop&w=900&q=80",
+        alt: "Mão a segurar um telemóvel com aplicações de redes sociais",
+      },
     },
     {
       slug: "tecnologia",
       title: "Tecnologia para Reservas",
       description:
         "Motor de reservas CultBooking, Google Hotel Ads e Channel Manager. A stack completa para maximizar reservas diretas.",
-      image: { src: "https://picsum.photos/seed/rd-tecnologia/600/360", alt: "Tecnologia para reservas" },
+      image: {
+        src: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=900&q=80",
+        alt: "Painel com gráficos de análise sobre um portátil",
+      },
     },
     {
       slug: "fidelizacao",
       title: "Consultoria e Fidelização",
       description:
         "Ajudamos a conhecer melhor os seus hóspedes e a criar estratégias de fidelização que transformam estadias únicas em clientes recorrentes.",
-      image: { src: "https://picsum.photos/seed/rd-fidelizacao/600/360", alt: "Consultoria e fidelização" },
+      image: {
+        src: "https://images.unsplash.com/photo-1521737852567-6949f3f9f2b5?auto=format&fit=crop&w=900&q=80",
+        alt: "Pessoas em reunião à volta de uma mesa",
+      },
     },
   ],
 };
