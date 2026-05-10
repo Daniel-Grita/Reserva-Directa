@@ -1,3 +1,5 @@
+import { safeJsonLd } from "@/lib/jsonLd";
+
 type Crumb = { name: string; url: string };
 
 const BASE = "https://reservadireta.pt";
@@ -5,7 +7,7 @@ const HOME: Crumb = { name: "Início", url: "/" };
 
 export default function Breadcrumbs({ items }: { items: Crumb[] }) {
   const trail = [HOME, ...items];
-  const jsonLd = JSON.stringify({
+  const jsonLd = safeJsonLd({
     "@context": "https://schema.org",
     "@type": "BreadcrumbList",
     itemListElement: trail.map((c, i) => ({

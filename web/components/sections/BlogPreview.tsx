@@ -21,19 +21,19 @@ export default function BlogPreview() {
           />
         </div>
 
-        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="reveal-stagger grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
           {blog.cards.map((article) => (
             <div
               key={article.title}
               className="bg-white border border-n-200 rounded-card overflow-hidden shadow-card hover:shadow-card-hover hover:-translate-y-1 transition-all duration-slow"
             >
-              <div className="w-full h-44 bg-n-300 overflow-hidden">
+              <div className="w-full aspect-[16/9] bg-n-300 overflow-hidden">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src={`https://picsum.photos/seed/reservadireta-blog-${article.title}/800/450`}
-                  alt={article.title}
+                  src={article.image.src}
+                  alt={article.image.alt}
                   loading="lazy"
-                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                  sizes="(max-width: 768px) 100vw, 600px"
                   className="w-full h-full object-cover"
                 />
               </div>

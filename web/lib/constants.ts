@@ -567,10 +567,24 @@ export const blog = {
   label: "BLOG / RECURSOS",
   heading: "Aprenda a crescer o seu alojamento",
   intro: "Partilhamos estratégias, guias práticos e insights do mercado de hotelaria.",
+  // TODO: replace these external Unsplash URLs with real cover art in /public/blog/.
   cards: [
-    { title: "5 formas de reduzir dependência das OTAs", cta: "Ler artigo →" },
-    { title: "Google Hotel Ads vale a pena para pequenos alojamentos?", cta: "Ler artigo →" },
-    { title: "Quanto custa realmente uma reserva Booking vs. direta?", cta: "Ler artigo →" },
+    {
+      title: "O Segredo para o Sucesso do seu Alojamento Local",
+      cta: "Ler artigo →",
+      image: {
+        src: "https://images.unsplash.com/photo-1566073771259-6a8506099945?auto=format&fit=crop&w=900&q=80",
+        alt: "Receção de alojamento boutique com luz natural",
+      },
+    },
+    {
+      title: "A presença estratégica no Google Business para alojamentos",
+      cta: "Ler artigo →",
+      image: {
+        src: "https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&w=900&q=80",
+        alt: "Pesquisa local num telemóvel a mostrar resultados de alojamento",
+      },
+    },
   ],
   cta: { label: "Ver Todos os Artigos", href: "/blog" },
 };

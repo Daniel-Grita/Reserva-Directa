@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Bricolage_Grotesque, Figtree } from "next/font/google";
 import CookieBanner from "@/components/ui/CookieBanner";
 import CloudflareAnalytics from "@/components/seo/CloudflareAnalytics";
+import { safeJsonLd } from "@/lib/jsonLd";
 import "./globals.css";
 
 const bricolage = Bricolage_Grotesque({
@@ -42,7 +43,7 @@ export const viewport: Viewport = {
   initialScale: 1,
 };
 
-const localBusinessJsonLd = JSON.stringify({
+const localBusinessJsonLd = safeJsonLd({
   "@context": "https://schema.org",
   "@type": "LocalBusiness",
   name: "Reserva Direta",

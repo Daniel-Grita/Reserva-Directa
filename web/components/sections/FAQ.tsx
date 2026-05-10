@@ -5,6 +5,7 @@ import { faq } from '@/lib/constants';
 import SectionHeader from '../ui/SectionHeader';
 import { useInView } from '@/lib/useInView';
 import { withHighlight } from '@/lib/highlight';
+import { safeJsonLd } from '@/lib/jsonLd';
 
 type Item = { question: string; answer: string };
 
@@ -45,7 +46,7 @@ export default function FAQ({
 
   const faqJsonLd = useMemo(
     () =>
-      JSON.stringify({
+      safeJsonLd({
         "@context": "https://schema.org",
         "@type": "FAQPage",
         mainEntity: items.map((item) => ({

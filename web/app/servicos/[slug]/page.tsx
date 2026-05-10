@@ -9,6 +9,7 @@ import ServiceProcess from '@/components/sections/ServiceProcess';
 import FAQ from '@/components/sections/FAQ';
 import Breadcrumbs from '@/components/seo/Breadcrumbs';
 import { serviceDetails, servicesPage, type ServiceSlug } from '@/lib/constants';
+import { safeJsonLd } from '@/lib/jsonLd';
 
 const slugs = Object.keys(serviceDetails) as ServiceSlug[];
 
@@ -41,7 +42,7 @@ export default async function ServiceDetailPage({
 
   const card = servicesPage.cards.find((c) => c.slug === slug);
 
-  const serviceJsonLd = JSON.stringify({
+  const serviceJsonLd = safeJsonLd({
     "@context": "https://schema.org",
     "@type": "Service",
     name: detail.heading,
