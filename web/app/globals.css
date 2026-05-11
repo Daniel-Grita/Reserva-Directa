@@ -240,6 +240,48 @@ body {
   }
 }
 
+/* ──────────────────────────────────────────────────────────
+   Hero floating image cards (4 asymmetric)
+   - Choreographed entrance (scale + fade-up), then continuous float
+   - Hover pauses the float so the card feels "held"
+   ────────────────────────────────────────────────────────── */
+@keyframes hero-float {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-10px); }
+}
+@keyframes hero-card-in {
+  from { opacity: 0; transform: scale(0.94) translateY(20px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+.hero-floats > * {
+  opacity: 0;
+  animation-name: hero-card-in, hero-float;
+  animation-duration: 800ms, 6s;
+  animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1), ease-in-out;
+  animation-fill-mode: both, none;
+  animation-iteration-count: 1, infinite;
+  will-change: transform;
+}
+.hero-floats > *:nth-child(1) { animation-delay: 200ms, 1000ms; }
+.hero-floats > *:nth-child(2) { animation-delay: 350ms, 1150ms; }
+.hero-floats > *:nth-child(3) { animation-delay: 500ms, 1300ms; }
+.hero-floats > *:nth-child(4) { animation-delay: 650ms, 1450ms; }
+.hero-floats > *:hover { animation-play-state: running, paused; }
+
+/* ──────────────────────────────────────────────────────────
+   Hero ambient blobs — slow opposing drift for atmosphere
+   ────────────────────────────────────────────────────────── */
+@keyframes hero-blob-drift-a {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(24px, -28px); }
+}
+@keyframes hero-blob-drift-b {
+  0%, 100% { transform: translate(0, 0); }
+  50%      { transform: translate(-24px, 28px); }
+}
+.hero-blob-a { animation: hero-blob-drift-a 14s ease-in-out infinite; }
+.hero-blob-b { animation: hero-blob-drift-b 16s ease-in-out infinite; }
+
 @media (prefers-reduced-motion: reduce) {
   [data-reveal] .reveal-up,
   [data-reveal] .reveal-stagger > *,
@@ -260,6 +302,15 @@ body {
   .hero-widget {
     opacity: 1;
     transform: none;
+    animation: none;
+  }
+  .hero-floats > * {
+    opacity: 1;
+    animation: none;
+    transform: none;
+  }
+  .hero-blob-a,
+  .hero-blob-b {
     animation: none;
   }
 }

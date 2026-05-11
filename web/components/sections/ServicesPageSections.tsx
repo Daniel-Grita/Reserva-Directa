@@ -6,10 +6,11 @@ import { LinkButton } from '../ui/Button';
 import ServiceIcon from '../ui/ServiceIcon';
 import { useInView } from '@/lib/useInView';
 
+const brandingPortfolio = servicesPage.cards.find((c) => c.slug === 'branding')?.link;
+
 const sections = (Object.keys(serviceDetails) as ServiceSlug[]).map((slug) => ({
   slug,
   detail: serviceDetails[slug],
-  ctaLabel: servicesPage.cards.find((c) => c.slug === slug)?.title.toLowerCase() ?? 'este serviço',
 }));
 
 export default function ServicesPageSections() {
@@ -25,12 +26,10 @@ export default function ServicesPageSections() {
 function ServiceSection({
   slug,
   detail,
-  ctaLabel,
   isAlt,
 }: {
   slug: ServiceSlug;
   detail: typeof serviceDetails[ServiceSlug];
-  ctaLabel: string;
   isAlt: boolean;
 }) {
   const [ref, inView] = useInView<HTMLElement>();
@@ -61,7 +60,7 @@ function ServiceSection({
             {detail.included.items.map((item) => (
               <li
                 key={item}
-                className={`flex items-start gap-4 rounded-card-lg p-5 lg:p-6 transition-all duration-slow hover:-translate-y-1 hover:shadow-card-hover ${
+                className={`flex items-start gap-4 rounded-card-lg p-5 lg:p-6 transition-[transform,box-shadow] duration-slow hover:-translate-y-1 hover:shadow-card-hover ${
                   isAlt ? 'bg-white' : 'bg-light-blue'
                 }`}
               >
@@ -90,11 +89,20 @@ function ServiceSection({
           </div>
         )}
 
-        <div className="reveal-up mt-10">
-          <LinkButton href="#contacto" variant={isAlt ? 'dark' : 'primary'}>
-            Falar sobre {ctaLabel}
-          </LinkButton>
-        </div>
+        {slug === 'branding' && brandingPortfolio && (
+          <div className="reveal-up mt-10 max-w-3xl">
+            <p className="text-body-base font-body text-n-600 mb-4">
+              Curioso para ver exemplos? Dê uma vista de olhos ao portfólio do nosso parceiro de design.
+            </p>
+            <LinkButton
+              href={brandingPortfolio.href}
+              variant={isAlt ? 'dark' : 'primary'}
+              external
+            >
+              {brandingPortfolio.label}
+            </LinkButton>
+          </div>
+        )}
       </div>
     </section>
   );

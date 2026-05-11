@@ -88,9 +88,10 @@ export const aboutPage = {
 };
 
 export const hero = {
-  heading: "Aumente as suas reservas diretas. Reduza comissões.",
+  heading: "Aumente as suas\nreservas diretas.",
+  headingSecondary: "Reduza comissões.",
   subtitle:
-    "Ajudamos alojamentos em Portugal a libertar-se da dependência das OTAs e a aumentar receita através de reservas diretas, com tecnologia, branding e marketing feitos à medida.",
+    "Ajudamos alojamentos em Portugal a libertar-se da dependência\ndas OTAs e a aumentar receita através de reservas diretas,\ncom tecnologia, branding e marketing feitos à medida.",
   cta1: { label: "Fale Connosco", href: "#contacto" },
   cta2: { label: "Ver Como Funciona", href: "#como-funciona" },
   mockupNote:

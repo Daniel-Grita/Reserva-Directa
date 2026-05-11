@@ -23,6 +23,7 @@ type CommonProps = {
 type LinkButtonProps = CommonProps & {
   href: string;
   onClick?: () => void;
+  external?: boolean;
 };
 
 type ButtonProps = CommonProps & {
@@ -31,9 +32,15 @@ type ButtonProps = CommonProps & {
   onClick?: () => void;
 };
 
-export function LinkButton({ variant = 'primary', className = '', href, onClick, children }: LinkButtonProps) {
+export function LinkButton({ variant = 'primary', className = '', href, onClick, external, children }: LinkButtonProps) {
+  const externalProps = external ? { target: '_blank' as const, rel: 'noopener noreferrer' } : {};
   return (
-    <Link href={href} onClick={onClick} className={`${baseClasses} ${variantClasses[variant]} ${className}`}>
+    <Link
+      href={href}
+      onClick={onClick}
+      {...externalProps}
+      className={`${baseClasses} ${variantClasses[variant]} ${className}`}
+    >
       {children}
     </Link>
   );
