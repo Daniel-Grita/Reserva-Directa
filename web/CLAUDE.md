@@ -14,7 +14,7 @@ Marketing landing page for **Reserva Direta**, a Portuguese agency helping hotel
 
 ## Current state (2026-05-13)
 
-All 10 landing-page sections built + 6 sub-pages live (`/quem-somos`, `/servicos`, `/a-nossa-solucao`, `/casos-de-uso`, `/blog`, `/blog/[slug]`). The `/servicos/[slug]` per-service detail pages were consolidated into full-page alternating sections on `/servicos` (2026-05-11). Sanity CMS is live and powering the blog.
+All 10 landing-page sections built + 6 sub-pages live (`/quem-somos`, `/servicos`, `/a-nossa-solucao`, `/casos-de-uso`, `/blog`, `/blog/[slug]`). The `/servicos/[slug]` per-service detail pages were consolidated into full-page alternating sections on `/servicos` (2026-05-11). Sanity CMS is live and powering the blog. Code audit completed (16/20) — all P1/P2 findings resolved (see `TODO.md` 2026-05-13 audit batch for details). Remaining open work: replace placeholder images, Calendly URL, Formspree spam check, Cloudflare Pages migration, Sanity for case studies.
 
 | # | Section | File | Notes |
 |---|---|---|---|

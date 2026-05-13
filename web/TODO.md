@@ -115,7 +115,21 @@ Hero rework + `/servicos` consolidation + component inventory:
 
 ---
 
-## 2026-05-13 batch (this session)
+## 2026-05-13 batch — audit fixes (this session)
+
+Code audit (15→16/20 corrected after finding skip link already existed). All P1/P2 findings fixed:
+
+- **Hero LCP priority**: `FloatCard` now accepts `priority` prop. Passed to first 2 floating images (desktop) + first stack image (mobile) — browser now emits `<link rel="preload">` for the LCP candidate.
+- **Hamburger touch target**: `w-10 h-10` (40px) → `w-11 h-11` (44px) in `Navbar.tsx`. Meets WCAG 2.5.5.
+- **`transition-all` → targeted**: `BlogPreview.tsx` card now uses `transition-[transform,box-shadow]`, matching every other card on the site.
+- **`text-body` undefined token**: `AboutTeamValues.tsx:58` — corrected to `text-body-base`.
+- **Hero blob animations on mobile**: Disabled via `@media (max-width: 1023px)` in `globals.css` — stops continuous `blur-3xl` GPU repaint on phones where the float layout is hidden anyway.
+- **FoundersIntro glassmorphism**: `bg-white/5 border border-white/10` glass box replaced with a clean `border-b border-white/15 pb-8` separator in `ContactCTA.tsx`.
+- **CLAUDE.md section order**: Corrected to match actual `page.tsx` order (FAQ → BlogPreview).
+
+---
+
+## 2026-05-13 batch — Sanity + redesign (this session)
 
 Sanity CMS blog integration + Quem Somos redesign + card animations:
 
@@ -125,4 +139,4 @@ Sanity CMS blog integration + Quem Somos redesign + card animations:
 - **`AboutTeamValues` redesigned**: founders in horizontal 2-col row (`aspect-[5/4]`, `bg-white p-2` frame matching Hero FloatCard style); values in horizontal 3-col card row. Hover tie-line and numbered values removed.
 - **Card hover lift**: `hover:-translate-y-1 hover:shadow-card-hover` added to all 5 service cards on home landing page + 3 value cards on `/quem-somos`.
 
-**Last updated:** 2026-05-13
+**Last updated:** 2026-05-13 (post-audit)
