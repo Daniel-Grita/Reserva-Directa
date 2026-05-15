@@ -1,9 +1,8 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
+  output: 'export',
   images: {
-    // Cloudflare Pages doesn't run Vercel's on-demand image optimizer.
-    // We ship pre-optimized WebPs from /public, so this is fine.
     unoptimized: true,
   },
 };

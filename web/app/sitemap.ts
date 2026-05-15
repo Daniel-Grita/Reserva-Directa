@@ -2,6 +2,8 @@ import type { MetadataRoute } from 'next';
 import { client } from '@/sanity/lib/client';
 import { POSTS_QUERY, PostSummary } from '@/sanity/lib/queries';
 
+export const dynamic = 'force-static';
+
 const BASE = 'https://reservadireta.pt';
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
