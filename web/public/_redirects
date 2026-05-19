@@ -1,3 +1,0 @@
-# Serve the studio SPA shell for all nested /studio/** routes
-# so refreshing /studio/structure etc. doesn't 404 on Cloudflare Pages
-/studio/* /studio.html 200
